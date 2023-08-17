@@ -7,16 +7,17 @@ from datetime import date
 
 class TaxLots:
 
-  index = None
-  date_finder = None # look up items in queue by date
+  index = None 
+  date_finder = None # look up items in queue by date {date: lot}
   strategy = None # fifo or hifo
-  pq = None # priority queue
-  REMOVED = -1
+  pq = None # priority queue [priority, date. price, amount, index]
+
+  REMOVED = -1 # constant
 
   def __init__(self, lots=[], strategy='fifo'):
     self.strategy = strategy
     self.date_finder = {}
-    self.pq = []
+    self.pq = [] 
     self.index = count(start=1)
     self.load_trades(lots)
   
@@ -96,7 +97,7 @@ class TaxLots:
 
 
 def main():
-  arg_parser = argparse.ArgumentParser()
+  arg_parser = argparse.ArgumentParser(prog='python taxes.py')
   arg_parser.add_argument('algorithm', choices=['hifo', 'fifo'], action='store', help='ordering algorithm for selling tax lots')
   args = arg_parser.parse_args()
   lines = []
