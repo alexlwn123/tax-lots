@@ -13,7 +13,7 @@
   * quantity should have eight decimal places
 
 ## Install
-* Requires ![Python3](https://www.python.org/downloads/) to be installed
+* Requires [Python3](https://www.python.org/downloads/) to be installed
 
 * Clone the repo and install dependencies within a virtual environment  
 ```shell
