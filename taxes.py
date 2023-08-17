@@ -75,7 +75,14 @@ class TaxLots:
 
   def parse_trade(self, raw_trade: [str, str, str, str]) -> [date, str, float, float]:
     try:
-      return [date.fromisoformat(raw_trade[0]), raw_trade[1], float(raw_trade[2]), float(raw_trade[3])]
+      trade = [date.fromisoformat(raw_trade[0]), raw_trade[1], float(raw_trade[2]), float(raw_trade[3])]
+      if trade[1] not in ('buy', 'sell'):
+        raise Exception(f'Illegal value. Trade must be "buy" or "sell" ({raw_trade})')
+      if trade[2] < 0:
+        raise Exception(f'Illegal value. Price cannot be negative. ({raw_trade})')
+      if trade[3] <= 0:
+        raise Exception(f'Illegal value. Trade quantity must be greater than zero. ({raw_trade})')
+      return trade
     except Exception as e:
       raise Exception(f'Failed to parse trade: {raw_trade}\n({e})')
 
