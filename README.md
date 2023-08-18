@@ -1,6 +1,6 @@
 # Tax Lot Selection Task
 
-This tool automates tax lot selection based on a provided algorithm. It utilizes a priority queue to efficiently rank and select lots to be sold.
+This tool automates tax lot selection based on a provided algorithm. It utilizes a priority queue to efficiently 
 ## Requirements
 * Create an executable script which takes one argument and handles input from stdin
 * Process an ordered transaction log read from stdin in the format of date,buy/sell,price,quantity separated by line breaks
